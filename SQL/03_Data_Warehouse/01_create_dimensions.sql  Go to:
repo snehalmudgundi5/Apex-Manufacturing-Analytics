@@ -1,0 +1,43 @@
+/* ============================================================
+   Apex Manufacturing Analytics
+   03 - Dimension Tables
+   ============================================================ */
+
+USE ApexManufacturing;
+GO
+
+
+/* ============================================================
+   Product Dimension
+   ============================================================ */
+
+IF OBJECT_ID('warehouse.dim_product', 'U') IS NOT NULL
+    DROP TABLE warehouse.dim_product;
+GO
+
+CREATE TABLE warehouse.dim_product
+(
+    Product_Key     INT IDENTITY(1,1) PRIMARY KEY,
+    Product_ID      VARCHAR(20) NOT NULL,
+    Product_Type    VARCHAR(10)
+);
+GO
+
+
+/* ============================================================
+   Supplier Dimension
+   ============================================================ */
+
+IF OBJECT_ID('warehouse.dim_supplier', 'U') IS NOT NULL
+    DROP TABLE warehouse.dim_supplier;
+GO
+
+CREATE TABLE warehouse.dim_supplier
+(
+    Supplier_Key        INT IDENTITY(1,1) PRIMARY KEY,
+    Supplier_ID         VARCHAR(20) NOT NULL,
+    Supplier_Name       VARCHAR(100),
+    Lead_Time_Days      INT,
+    Quality_Rating      DECIMAL(5,2)
+);
+GO
